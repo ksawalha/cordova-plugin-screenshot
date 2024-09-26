@@ -40,7 +40,7 @@ public class ScreenshotPlugin extends CordovaPlugin {
         return false;
     }
 
-    private void takeScreenshot(CallbackContext callbackContext) {
+   private void takeScreenshot(CallbackContext callbackContext) {
         Activity activity = this.cordova.getActivity();
         Window window = activity.getWindow();
         View view = window.getDecorView().getRootView();
@@ -49,7 +49,8 @@ public class ScreenshotPlugin extends CordovaPlugin {
         view.setDrawingCacheEnabled(false);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-        String base64Image = Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        String base64Image = Base64.encodeToString(byteArray, Base64.DEFAULT);
         callbackContext.success(base64Image);
     }
 

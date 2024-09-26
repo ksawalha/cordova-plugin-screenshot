@@ -12,7 +12,6 @@ import org.json.JSONException;
 import java.io.ByteArrayOutputStream;
 
 public class ScreenshotPlugin extends CordovaPlugin {
-
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if ("takeScreenshot".equals(action)) {
@@ -26,15 +25,12 @@ public class ScreenshotPlugin extends CordovaPlugin {
         Activity activity = this.cordova.getActivity();
         Window window = activity.getWindow();
         View view = window.getDecorView().getRootView();
-
         view.setDrawingCacheEnabled(true);
         Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
         view.setDrawingCacheEnabled(false);
-
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream.toByteArray();
-
         String base64Image = Base64.encodeToString(byteArray, Base64.DEFAULT);
         callbackContext.success(base64Image);
     }

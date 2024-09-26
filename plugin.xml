@@ -1,11 +1,15 @@
 <plugin id="cordova-plugin-screenshot" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
     <name>ScreenshotPlugin</name>
-    <description>Capture screen and return base64, manage Bluetooth printing</description>
+    <description>Capture screen and return base64</description>
     <license>MIT</license>
-    <keywords>cordova, screenshot, base64, bluetooth</keywords>
+    <keywords>cordova, screenshot, base64</keywords>
 
     <js-module src="www/screenshot.js" name="ScreenshotPlugin">
         <clobbers target="ScreenshotPlugin" />
+    </js-module>
+
+    <js-module src="www/printer.js" name="PrinterPlugin">
+        <clobbers target="PrinterPlugin" />
     </js-module>
 
     <platform name="android">
@@ -13,8 +17,12 @@
             <feature name="ScreenshotPlugin">
                 <param name="android-package" value="org.apache.cordova.screenshot.ScreenshotPlugin"/>
             </feature>
+            <feature name="PrinterPlugin">
+                <param name="android-package" value="org.apache.cordova.screenshot.PrinterPlugin"/>
+            </feature>
         </config-file>
         <source-file src="src/android/ScreenshotPlugin.java" target-dir="src/org/apache/cordova/screenshot"/>
+        <source-file src="src/android/PrinterPlugin.java" target-dir="src/org/apache/cordova/screenshot"/>
         
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.BLUETOOTH"/>

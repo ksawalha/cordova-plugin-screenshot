@@ -28,10 +28,15 @@ public class ScreenshotPlugin extends CordovaPlugin {
         view.setDrawingCacheEnabled(true);
         Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
         view.setDrawingCacheEnabled(false);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream.toByteArray();
-        String base64Image = Base64.encodeToString(byteArray, Base64.DEFAULT);
-        callbackContext.success(base64Image);
+
+        if (bitmap != null) {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream.toByteArray();
+            String base64Image = Base64.encodeToString(byteArray, Base64.DEFAULT);
+            callbackContext.success(base64Image);
+        } else {
+            callbackContext.error("Failed to capture screenshot.");
+        }
     }
 }

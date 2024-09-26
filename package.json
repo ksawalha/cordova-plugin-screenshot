@@ -1,0 +1,29 @@
+{
+  "name": "cordova-plugin-screenshot",
+  "version": "1.0.0",
+  "description": "A Cordova plugin to capture the screen and return the base64 encoded image.",
+  "cordova": {
+    "id": "cordova-plugin-screenshot",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "screenshot",
+    "base64",
+    "plugin",
+    "android"
+  ],
+  "author": "Karam Sawalha",
+  "license": "MIT",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=10.0.0"
+    }
+  ],
+  "dependencies": {},
+  "scripts": {},
+  "devDependencies": {}
+}

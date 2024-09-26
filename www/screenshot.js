@@ -6,8 +6,9 @@ var ScreenshotPlugin = {
     }
 };
 
-// Register the plugin for OutSystems
-if (typeof OS !== 'undefined') {
-    OS.plugins = OS.plugins || {};
-    OS.plugins.ScreenshotPlugin = ScreenshotPlugin;
+// Register the plugin with the standard Cordova interface
+if (typeof window !== 'undefined') {
+    window.ScreenshotPlugin = ScreenshotPlugin;
 }
+
+module.exports = ScreenshotPlugin;

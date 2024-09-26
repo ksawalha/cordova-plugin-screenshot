@@ -1,4 +1,4 @@
-org.apache.cordova.screenshot;
+package org.apache.cordova.screenshot;
 
 import android.graphics.Bitmap;
 import android.util.Base64;

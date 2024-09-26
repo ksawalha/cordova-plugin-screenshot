@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-screenshot",
   "version": "1.0.0",
-  "description": "A Cordova plugin to capture the screen and return the base64 encoded image.",
+  "description": "A Cordova plugin to capture the screen and return the base64 encoded image, and print ESC/POS commands via Bluetooth.",
   "cordova": {
     "id": "cordova-plugin-screenshot",
     "platforms": [
@@ -13,7 +13,9 @@
     "screenshot",
     "base64",
     "plugin",
-    "android"
+    "android",
+    "bluetooth",
+    "printer"
   ],
   "author": "Your Name",
   "license": "MIT",

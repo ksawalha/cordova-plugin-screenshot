@@ -1,9 +1,13 @@
 var exec = require('cordova/exec');
 
-var screenshot = {
-    takeScreenshot: function (successCallback, errorCallback) {
+var ScreenshotPlugin = {
+    takeScreenshot: function(successCallback, errorCallback) {
         exec(successCallback, errorCallback, "ScreenshotPlugin", "takeScreenshot", []);
     }
 };
 
-module.exports = screenshot;
+// Register the plugin for OutSystems
+if (typeof OS !== 'undefined') {
+    OS.plugins = OS.plugins || {};
+    OS.plugins.ScreenshotPlugin = ScreenshotPlugin;
+}

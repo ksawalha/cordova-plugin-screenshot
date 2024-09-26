@@ -7,51 +7,34 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.util.Base64;
-import android.view.View;
-import android.view.Window;
 import androidx.core.app.ActivityCompat;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;
 import org.json.JSONException;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Set;
 import java.util.UUID;
 
-public class ScreenshotPlugin extends CordovaPlugin {
+public class PrinterPlugin extends CordovaPlugin {
     private static final int REQUEST_ENABLE_BT = 1;
     private static final int REQUEST_LOCATION_PERMISSION = 2;
     private BluetoothAdapter bluetoothAdapter;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if ("takeScreenshot".equals(action)) {
-            takeScreenshot(callbackContext);
-            return true;
-        } else if ("connectPrinter".equals(action)) {
-            String escPosCommands = args.getString(0);
-            connectPrinter(escPosCommands, callbackContext);
-            return true;
+        if ("connectPrinter".equals(action)) {
+            if (args.length() > 0) {
+                String escPosCommands = args.getString(0);
+                connectPrinter(escPosCommands, callbackContext);
+                return true;
+            } else {
+                callbackContext.error("ESC/POS commands are required.");
+                return false;
+            }
         }
         return false;
-    }
-
-   private void takeScreenshot(CallbackContext callbackContext) {
-        Activity activity = this.cordova.getActivity();
-        Window window = activity.getWindow();
-        View view = window.getDecorView().getRootView();
-        view.setDrawingCacheEnabled(true);
-        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
-        view.setDrawingCacheEnabled(false);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream.toByteArray();
-        String base64Image = Base64.encodeToString(byteArray, Base64.DEFAULT);
-        callbackContext.success(base64Image);
     }
 
     private void connectPrinter(String escPosCommands, CallbackContext callbackContext) {

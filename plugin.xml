@@ -8,29 +8,18 @@
         <clobbers target="ScreenshotPlugin" />
     </js-module>
 
-    <js-module src="www/printer.js" name="PrinterPlugin">
-        <clobbers target="PrinterPlugin" />
-    </js-module>
-
     <platform name="android">
         <config-file target="config.xml" parent="/*">
             <feature name="ScreenshotPlugin">
                 <param name="android-package" value="org.apache.cordova.screenshot.ScreenshotPlugin"/>
             </feature>
-            <feature name="PrinterPlugin">
-                <param name="android-package" value="org.apache.cordova.screenshot.PrinterPlugin"/>
-            </feature>
         </config-file>
         <source-file src="src/android/ScreenshotPlugin.java" target-dir="src/org/apache/cordova/screenshot"/>
-        <source-file src="src/android/PrinterPlugin.java" target-dir="src/org/apache/cordova/screenshot"/>
         
         <config-file target="AndroidManifest.xml" parent="/*">
-            <uses-permission android:name="android.permission.BLUETOOTH"/>
-            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-            <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
-            <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.INTERNET" />
         </config-file>
     </platform>
 </plugin>

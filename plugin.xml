@@ -1,0 +1,14 @@
+<plugin id="cordova-plugin-screenshot" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>ScreenshotPlugin</name>
+    <description>Capture screen and return base64</description>
+    <license>MIT</license>
+    <keywords>cordova, screenshot, base64</keywords>
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="ScreenshotPlugin">
+                <param name="android-package" value="org.apache.cordova.screenshot.ScreenshotPlugin"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/ScreenshotPlugin.java" target-dir="src/org/apache/cordova/screenshot"/>
+    </platform>
+</plugin>

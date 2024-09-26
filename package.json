@@ -13,9 +13,7 @@
     "screenshot",
     "base64",
     "plugin",
-    "android",
-    "bluetooth",
-    "printer"
+    "android"
   ],
   "author": "Your Name",
   "license": "MIT",

@@ -3,6 +3,11 @@
     <description>Capture screen and return base64</description>
     <license>MIT</license>
     <keywords>cordova, screenshot, base64</keywords>
+
+    <js-module src="www/screenshot.js" name="ScreenshotPlugin">
+        <clobbers target="ScreenshotPlugin" />
+    </js-module>
+
     <platform name="android">
         <config-file target="config.xml" parent="/*">
             <feature name="ScreenshotPlugin">

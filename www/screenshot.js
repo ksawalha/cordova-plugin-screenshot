@@ -1,7 +1,5 @@
 var exec = require('cordova/exec');
 
-exports.takeScreenshot = function(success, error) {
-    exec(success, error, 'ScreenshotPlugin', 'takeScreenshot', []);
+exports.takeScreenshot = function (successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "ScreenshotPlugin", "takeScreenshot", []);
 };
-
-module.exports = exports;

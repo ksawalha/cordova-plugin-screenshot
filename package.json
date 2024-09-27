@@ -21,6 +21,6 @@
     ]
   },
   "dependencies": {
-    "cordova-android": "^9.0.0"  // Adjust this version based on the Cordova Android version you are targeting
+    "cordova-android": "^10.0.0"
   }
 }

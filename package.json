@@ -1,29 +1,26 @@
 {
   "name": "cordova-plugin-screenshot",
   "version": "1.0.0",
-  "description": "A Cordova plugin to capture the screen and return the base64 encoded image, and print ESC/POS commands via Bluetooth.",
+  "description": "Cordova plugin to capture a screenshot of the current view with full height.",
+  "main": "www/screenshot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cordova",
+    "plugin",
+    "screenshot",
+    "android"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
   "cordova": {
     "id": "cordova-plugin-screenshot",
     "platforms": [
       "android"
     ]
   },
-  "keywords": [
-    "cordova",
-    "screenshot",
-    "base64",
-    "plugin",
-    "android"
-  ],
-  "author": "Your Name",
-  "license": "MIT",
-  "engines": [
-    {
-      "name": "cordova",
-      "version": ">=10.0.0"
-    }
-  ],
-  "dependencies": {},
-  "scripts": {},
-  "devDependencies": {}
+  "dependencies": {
+    "cordova-android": "^9.0.0"  // Adjust this version based on the Cordova Android version you are targeting
+  }
 }

@@ -1,25 +1,26 @@
-<plugin id="cordova-plugin-screenshot" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-screenshot"
+        version="1.0.0">
+    
     <name>ScreenshotPlugin</name>
-    <description>Capture screen and return base64</description>
+    
+    <description>Plugin to capture screenshot of the current view</description>
+    
     <license>MIT</license>
-    <keywords>cordova, screenshot, base64</keywords>
-
-    <js-module src="www/screenshot.js" name="ScreenshotPlugin">
-        <clobbers target="ScreenshotPlugin" />
+    
+    <keywords>cordova, screenshot</keywords>
+    
+    <js-module src="www/screenshot.js" name="Screenshot">
+        <clobbers target="navigator.screenshot" />
     </js-module>
-
+    
     <platform name="android">
-        <config-file target="config.xml" parent="/*">
+        <config-file target="res/xml/config.xml" parent="/*">
             <feature name="ScreenshotPlugin">
-                <param name="android-package" value="org.apache.cordova.screenshot.ScreenshotPlugin"/>
+                <param name="android-package" value="org.apache.cordova.screenshot.ScreenshotPlugin" />
             </feature>
         </config-file>
-        <source-file src="src/android/ScreenshotPlugin.java" target-dir="src/org/apache/cordova/screenshot"/>
-        
-        <config-file target="AndroidManifest.xml" parent="/*">
-            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-            <uses-permission android:name="android.permission.INTERNET" />
-        </config-file>
+        <source-file src="src/android/ScreenshotPlugin.java" target-dir="src/org/apache/cordova/screenshot" />
     </platform>
 </plugin>
